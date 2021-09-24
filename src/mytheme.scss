@@ -1,0 +1,131 @@
+// //@import "app/core/auth/login/login.component.scss";
+// // @use "~@angular/material" as mat;
+// //@import "~@angular/material/theming";
+// // @include mat.core();
+
+// @import "~@angular/material/theming";
+// @include mat-core();
+
+// // Define a light theme
+// $light-primary: mat.define-palette(mat.$indigo-palette);
+// $light-accent: mat.define-palette(mat.$pink-palette);
+// $light-theme: mat.define-light-theme(
+//   (
+//     color: (
+//       primary: $light-primary,
+//       accent: $light-accent,
+//     ),
+//   )
+// );
+
+// // Define a dark theme
+// $dark-primary: mat.define-palette(mat.$pink-palette);
+// $dark-accent: mat.define-palette(mat.$blue-gray-palette);
+// $dark-theme: mat.define-dark-theme(
+//   (
+//     color: (
+//       primary: $dark-primary,
+//       accent: $dark-accent,
+//     ),
+//   )
+// );
+
+// // Apply the dark theme by default
+// @include mat.core-theme($dark-theme);
+// @include mat.button-theme($dark-theme);
+
+// // Apply the light theme only when the `.my-light-theme` CSS class is applied
+// // to an ancestor element of the components (such as `body`).
+// .my-light-theme {
+//   @include mat.core-color($light-theme);
+//   @include mat.button-color($light-theme);
+// }
+// .ccc {
+//   height: 20px;
+//   width: 20px;
+//   background-color: #620aaf;
+// }
+// //$fwk-dark-app-theme: mat-dark-theme($bm-primary, $bm-accent, $bm-warn);
+// //
+// //$fwk-light-app-theme: mat-light-theme($bm-accent2, $bm-accent2, $bm-warn);
+// //
+// //.dark-theme {
+// //  @include angular-material-theme($fwk-dark-app-theme);
+// //}
+// //
+// //.light-theme {
+// //  @include angular-material-theme($fwk-light-app-theme);
+// //}
+// //
+// //@mixin login-theme($bm-theme) {
+// //  $primary: map-get($bm-theme, primary);
+// //  $accent: map-get($bm-theme, accent);
+// //  $background-color: mat-palette($mat-gray, 400);
+// //  $user-panel-background-color: mat-palette($mat-gray, 300);
+// //  $user-panel-background-color2: mat-palette($mat-orange, 300);
+// //  $background-color2: mat-palette($mat-orange, 400);
+// //
+// //  .example-card {
+// //    background-color: mat-color($primary);
+// //  }
+// //
+// //  .exampleTable {
+// //    background-color: mat-color($accent);
+// //  }
+// //}
+
+// @include angular-material-theme($bm-theme);
+@import "app/core/auth/login/login.component.scss";
+@import "app/core/auth/signup/signup.component.scss";
+@import "~@angular/material/theming";
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// **Be sure that you only ever include this mixin once!**
+@include mat-core();
+
+// Define the default theme (same as the example above).
+$light-primary: mat-palette($mat-indigo);
+$light-accent: mat-palette($mat-pink, A200, A100, A400);
+$light-theme: mat-light-theme(
+  (
+    color: (
+      primary: $light-primary,
+      accent: $light-accent,
+    ),
+  )
+);
+
+// Define an alternate dark theme.
+$dark-primary: mat-palette($mat-blue, A200, A100, A400);
+$dark-accent: mat-palette($mat-deep-purple, A200, A100, A400);
+$dark-warn: mat-palette($mat-deep-orange);
+$dark-theme: mat-dark-theme(
+  (
+    color: (
+      primary: $dark-primary,
+      accent: $dark-accent,
+      warn: $dark-warn,
+    ),
+  )
+);
+
+// Include the default theme styles (color and default density)
+@include angular-material-theme($light-theme);
+
+// Include the dark color styles inside of a block with a CSS class. You can make this
+// CSS class whatever you want. In this example, any component inside of an element with
+// `.unicorn-dark-theme` will be affected by this alternate dark theme instead of the default theme.
+.unicorn-dark-theme {
+  @include angular-material-color($dark-theme);
+}
+
+.mat-card {
+  border-radius: 30px !important;
+}
+.mat-flat-button {
+  border-radius: 50px !important;
+}
+@include login-theme($dark-theme);
+@include signup-theme($dark-theme);
